@@ -4,6 +4,8 @@ import io.jumpco.demo.todo.model.EntityNotFoundException;
 import io.jumpco.demo.todo.model.Todo;
 import io.jumpco.demo.todo.model.TodoService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,11 +60,25 @@ public class TodoController {
         return home();
     }
 
+    //@PostMapping("/todo/add")
+
+    //public View create(@Valid @ModelAttribute Todo todo) {
+     //   todoService.create(todo);
+     //return home();
     @PostMapping("/todo/add")
-    public View create(@Valid @ModelAttribute Todo todo) {
+    public ModelAndView create(@Valid @ModelAttribute Todo todo, BindingResult bindingResult, Model mode) {
+        if(bindingResult.hasErrors()){
+            ModelAndView results = new ModelAndView("add-edit");
+            results.addAllObjects(mode.asMap());
+            results.addObject("mode","add");
+            results.addObject("modeTitle","create");
+            return results;
+        }
         todoService.create(todo);
-        return home();
+        return new ModelAndView("redirect:/");
+
     }
+
 
     @GetMapping(value = "/todo/delete/{id}")
     public View delete(@PathVariable("id") Long id) {
