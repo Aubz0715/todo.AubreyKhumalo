@@ -46,7 +46,7 @@ font-size: 100%;
         <form:hidden path="id"/>
 
             <div class="container ">
-                <h4>${modeTitle} New Schedule</h4>
+                <h4>${modeTitle}New Schedule</h4>
 
         </div>
         <div class="form-group offset-1 col-10">
