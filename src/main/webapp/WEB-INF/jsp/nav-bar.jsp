@@ -10,7 +10,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
             <div class="nav-centered">
-                <a class="nav-link" href="${pageContext.request.contextPath}/todo/create">+ Add Schedule</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/todo/create"> + Add Schedule</a>
             </div>
             </li>
         </ul>
