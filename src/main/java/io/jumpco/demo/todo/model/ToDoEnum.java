@@ -4,6 +4,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 public class ToDoEnum {
-    enum Grading { incomplete,partialComplete,Complete}
+    enum Grading {incomplete,partialComplete,Complete}
 
 }
