@@ -1,13 +1,10 @@
 package io.jumpco.demo.todo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.StringJoiner;
+
 
 @Entity
 public class Todo {
@@ -96,5 +93,38 @@ public class Todo {
                 .add("completed=" + completed)
                 .add("order=" + order)
                 .toString();
+    }
+
+    public enum TodoType {
+        Task( "Task"),
+        Bug( "Bug"),
+        Features( "Features"),
+        Maintenance( "Maintenance"),
+        Ready( "Ready"),
+        In_Progress( "In_Progress"),
+        Done( "Done"),
+        Enhancement( "Enhancement");
+
+        private String management;
+
+        TodoType(String management) {
+            this.management = management;
+        }
+
+        public String getManagement() {
+            return management;
+        }
+
+        @Enumerated(EnumType.STRING)
+        private TodoType todo_type;
+
+        public TodoType getTodo_type(){
+            return todo_type;
+        }
+        public void setTodo_type(TodoType todo_type) {
+
+            this.todo_type = todo_type;
+        }
+
     }
 }

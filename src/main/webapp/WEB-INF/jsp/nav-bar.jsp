@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-light navbar-pink">
+<nav class="navbar navbar-expand-sm bg-light navbar-purple">
 <div class="topnav-centered">
     <a class="navbar-brand" href="${pageContext.request.contextPath}/"> Schedule </a>
     </div>
@@ -10,7 +10,12 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
             <div class="nav-centered">
-                <a class="nav-link" href="${pageContext.request.contextPath}/todo/create">+ Add Schedule</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/todo/create">+ Add Schedule </a>
+                <select id = "Todo">
+                   <option value = "Tasks"> Tasks </option>
+                   <option value = "Create"> Create </option>
+                   <option value = "Features"> Features </option>
+                </select>
             </div>
             </li>
         </ul>
