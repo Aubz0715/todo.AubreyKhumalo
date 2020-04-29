@@ -29,6 +29,7 @@
             <th scope="col"><label>List</label></th>
             <th scope="col"><label>Completed</label></th>
             <th scope="col"><label>Action</label></th>
+            <th scope="col"><label>Type</label></th>
             </center>
         </tr>
         </thead>

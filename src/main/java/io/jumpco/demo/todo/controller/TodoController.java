@@ -3,6 +3,7 @@ package io.jumpco.demo.todo.controller;
 import io.jumpco.demo.todo.model.EntityNotFoundException;
 import io.jumpco.demo.todo.model.Todo;
 import io.jumpco.demo.todo.model.TodoService;
+import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Controller
 public class TodoController {
@@ -31,6 +36,7 @@ public class TodoController {
         result.addObject("mode", "add");
         result.addObject("modeTitle", "Create");
         result.addObject("todo", new Todo());
+        result.addObject("todoType", "type");
         return result;
     }
 
@@ -101,5 +107,16 @@ public class TodoController {
         ModelAndView result = new ModelAndView("index");
         result.addObject("todos", todoService.list(null));
         return result;
+    }
+    protected Map referenceData(HttpServletRequest request){
+        Map referenceData = new HashMap();
+        Map<String,String> type = new LinkedHashMap<String, String>();
+        type.put("TASK", "Task");
+        type.put("BUG", "Bug");
+        type.put("FEATURE", "Feature");
+        type.put("ENHANCEMENT", "Enhancement");
+        type.put("MAINTENANCE", "Task");
+        referenceData.put("TodoType", type);
+        return type;
     }
 }
